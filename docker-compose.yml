@@ -26,6 +26,8 @@ services:
       - musicdl
     environment:
       - DEFAULT_EMAIL=nico.enking@gmail.com
+    depends_on:
+      - nginx-proxy
 
   musicdl:
     image: nicoenking/musicdl
