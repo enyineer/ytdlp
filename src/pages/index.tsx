@@ -84,6 +84,7 @@ export default function Home() {
                     label="URL"
                     withAsterisk
                     disabled={isLoading}
+                    placeholder="https://youtube.com/watch?v=OdEN9kQPtbc"
                     {...form.getInputProps('url')}
                   />
                   <Button
