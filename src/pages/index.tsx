@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import { Button, Container, Flex, Paper, Text, TextInput, Title } from '@mantine/core'
+import { ActionIcon, Button, Container, Flex, Paper, Text, TextInput, ThemeIcon, Title, Tooltip } from '@mantine/core'
 import { useForm, zodResolver } from '@mantine/form'
 import { z } from 'zod'
 import { showNotification } from '@mantine/notifications';
 import { useState } from 'react';
 import { saveAs } from 'file-saver';
-import Link from 'next/link';
+import { IconBrandFacebook, IconBrandInstagram, IconBrandSoundcloud, IconBrandYoutube, IconDots } from '@tabler/icons-react';
 
 const schema = z.object({
   url: z.string().url('Needs to be a valid URL')
@@ -87,6 +87,33 @@ export default function Home() {
                     placeholder="https://youtube.com/watch?v=OdEN9kQPtbc"
                     {...form.getInputProps('url')}
                   />
+                  <Flex gap="xs" justify="center">
+                    <Tooltip label="YouTube">
+                      <ThemeIcon color="red">
+                        <IconBrandYoutube size={18} />
+                      </ThemeIcon>
+                    </Tooltip>
+                    <Tooltip label="Soundcloud">
+                      <ThemeIcon color="orange">
+                        <IconBrandSoundcloud size={18} />
+                      </ThemeIcon>
+                    </Tooltip>
+                    <Tooltip label="Instagram">
+                      <ThemeIcon color="orange" variant='gradient' gradient={{ from: '#F77737', to: '#833AB4' }}>
+                        <IconBrandInstagram size={18} />
+                      </ThemeIcon>
+                    </Tooltip>
+                    <Tooltip label="Facebook">
+                      <ThemeIcon color="blue">
+                        <IconBrandFacebook size={18} />
+                      </ThemeIcon>
+                    </Tooltip>
+                    <Tooltip label="And many more!">
+                      <ActionIcon onClick={() => window.open('https://ytdl-org.github.io/youtube-dl/supportedsites.html', '_blank')?.focus()}>
+                        <IconDots />
+                      </ActionIcon>
+                    </Tooltip>
+                  </Flex>
                   <Button
                     variant='outline'
                     type='submit'
@@ -98,7 +125,7 @@ export default function Home() {
                 </Flex>
               </form>
             </Paper>
-            <Text color="dimmed" fz="xs">Easy music downloader - no dogshit included</Text>
+            <Text color="dimmed" fz="xs">Easy link to MP3 Converter - no dogshit included</Text>
             <Text color="dimmed" fz="xs">Made with ❤️ for Allegra</Text>
           </Flex>
         </Container>

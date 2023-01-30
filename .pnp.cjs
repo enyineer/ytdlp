@@ -37,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mantine/hooks", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:5.10.2"],\
             ["@mantine/notifications", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:5.10.2"],\
             ["@next/font", "npm:13.1.6"],\
+            ["@tabler/icons-react", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:2.1.2"],\
             ["@types/command-exists", "npm:1.2.0"],\
             ["@types/file-saver", "npm:2.0.5"],\
             ["@types/fluent-ffmpeg", "npm:2.1.20"],\
@@ -1085,6 +1086,39 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@swc/helpers", "npm:0.4.14"],\
             ["tslib", "npm:2.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@tabler/icons", [\
+        ["npm:2.1.2", {\
+          "packageLocation": "./.yarn/cache/@tabler-icons-npm-2.1.2-ee042a6f20-bce682e783.zip/node_modules/@tabler/icons/",\
+          "packageDependencies": [\
+            ["@tabler/icons", "npm:2.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@tabler/icons-react", [\
+        ["npm:2.1.2", {\
+          "packageLocation": "./.yarn/cache/@tabler-icons-react-npm-2.1.2-14d5ff308a-db776a5c44.zip/node_modules/@tabler/icons-react/",\
+          "packageDependencies": [\
+            ["@tabler/icons-react", "npm:2.1.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:2.1.2", {\
+          "packageLocation": "./.yarn/__virtual__/@tabler-icons-react-virtual-dcf0ba9e28/0/cache/@tabler-icons-react-npm-2.1.2-14d5ff308a-db776a5c44.zip/node_modules/@tabler/icons-react/",\
+          "packageDependencies": [\
+            ["@tabler/icons-react", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:2.1.2"],\
+            ["@tabler/icons", "npm:2.1.2"],\
+            ["@types/react", "npm:18.0.27"],\
+            ["prop-types", "npm:15.8.1"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4566,6 +4600,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mantine/hooks", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:5.10.2"],\
             ["@mantine/notifications", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:5.10.2"],\
             ["@next/font", "npm:13.1.6"],\
+            ["@tabler/icons-react", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:2.1.2"],\
             ["@types/command-exists", "npm:1.2.0"],\
             ["@types/file-saver", "npm:2.0.5"],\
             ["@types/fluent-ffmpeg", "npm:2.1.20"],\
