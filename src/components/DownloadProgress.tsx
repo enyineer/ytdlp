@@ -42,11 +42,6 @@ export default function DownloadProgress(props: DownloadProgressProps) {
   }
 
   return (
-    <Flex direction="column" gap="xs" align="center">
-      <Text fz="xs">
-        {percentage}%
-      </Text>
-      <Progress value={percentage} w="100%" color="teal" striped animate />
-    </Flex>
+    <Progress value={percentage} w="100%" color="teal" striped animate />
   );
 }
