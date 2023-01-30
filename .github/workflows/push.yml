@@ -5,6 +5,8 @@ on:
     branches:
       - 'main'
 
+concurrency: 'docker'
+
 jobs:
   docker:
     runs-on: ubuntu-latest
