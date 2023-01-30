@@ -1,23 +1,43 @@
 {
   "name": "ytdlp",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "docker:test": "docker build -t test . && docker run --rm -it -p 3000:3000 test"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.5",
+    "@emotion/react": "^11.10.5",
+    "@emotion/serialize": "^1.1.1",
+    "@emotion/utils": "^1.2.0",
+    "@mantine/core": "^5.10.2",
+    "@mantine/form": "^5.10.2",
+    "@mantine/hooks": "^5.10.2",
+    "@mantine/notifications": "^5.10.2",
     "@next/font": "13.1.6",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
+    "command-exists": "^1.2.9",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "file-saver": "^2.0.5",
+    "fluent-ffmpeg": "^2.1.2",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "4.9.4"
-  }
+    "typescript": "4.9.4",
+    "yt-dlp-wrap": "^2.3.11",
+    "zod": "^3.20.2"
+  },
+  "devDependencies": {
+    "@types/command-exists": "^1.2.0",
+    "@types/file-saver": "^2.0.5",
+    "@types/fluent-ffmpeg": "^2.1.20"
+  },
+  "packageManager": "yarn@3.3.1"
 }

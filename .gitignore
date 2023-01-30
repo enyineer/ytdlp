@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.yarn/unplugged
+.yarn/build-state.yml
+
+binaries/
