@@ -33,7 +33,7 @@ export default function DownloadProgress(props: DownloadProgressProps) {
   }, [props.ticket, socket]);
 
   return (
-    <Flex direction="column" gap="xs">
+    <Flex direction="column" gap="xs" align="center">
       <Text fz="xs">{currentProgress?.ytdlp.text} {currentProgress?.ytdlp.value}%</Text>
       <Text fz="xs">{currentProgress?.ffmpeg.text} {currentProgress?.ffmpeg.value}%</Text>
     </Flex>
