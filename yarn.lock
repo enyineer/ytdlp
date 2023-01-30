@@ -2547,15 +2547,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minipass@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "minipass@npm:4.0.0"
-  dependencies:
-    yallist: ^4.0.0
-  checksum: 7a609afbf394abfcf9c48e6c90226f471676c8f2a67f07f6838871afb03215ede431d1433feffe1b855455bcb13ef0eb89162841b9796109d6fed8d89790f381
-  languageName: node
-  linkType: hard
-
 "ms@npm:2.1.2":
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
@@ -3602,7 +3593,6 @@ __metadata:
     eslint-config-next: 13.1.6
     file-saver: ^2.0.5
     fluent-ffmpeg: ^2.1.2
-    minipass: ^4.0.0
     next: 13.1.6
     react: 18.2.0
     react-dom: 18.2.0

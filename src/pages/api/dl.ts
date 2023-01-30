@@ -4,7 +4,6 @@ import { FFMPEG } from '../../core/ffmpeg';
 import { YTDLP } from '../../core/ytdlp';
 import { z } from 'zod';
 import { validate } from './_utils';
-import Minipass from 'minipass';
 import { PassThrough } from 'stream';
 
 const ytdlp = new YTDLP();
