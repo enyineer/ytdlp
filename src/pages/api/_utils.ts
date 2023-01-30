@@ -12,3 +12,29 @@ export const validate = async <T extends ZodRawShape>(schema: ZodObject<T>, req:
     return null;
   }
 }
+
+export const timemarkToSeconds = (timemark: string) => {
+  const regex = /(\d+):(\d+):(\d+)\.(\d+)/g;
+
+  const matches = regex.exec(timemark);
+
+  if (!matches) {
+    return null;
+  }
+
+  const hours = parseInt(matches[1]);
+  const minutes = parseInt(matches[2]);
+  const seconds = parseInt(matches[3]);
+
+  if (
+    Number.isNaN(hours) ||
+    Number.isNaN(minutes) ||
+    Number.isNaN(seconds)
+  ) {
+    return null;
+  }
+
+  const inSeconds = (hours * 60 * 60) + (minutes * 60) + seconds;
+
+  return inSeconds;
+}

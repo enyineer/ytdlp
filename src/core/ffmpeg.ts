@@ -23,9 +23,7 @@ export class FFMPEG {
   }
 
   convertStreamable(stream: Readable) {
-    const ffmpeg = FFMPEGWrapper(stream, {
-      logger: console
-    });
+    const ffmpeg = FFMPEGWrapper(stream);
     ffmpeg.setFfmpegPath(this.ffmpegPath);
     ffmpeg.setFfprobePath(this.ffprobePath);
     ffmpeg.toFormat('mp3');

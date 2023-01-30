@@ -1,13 +1,26 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest } from 'next';
 import { FFMPEG } from '../../core/ffmpeg';
 import { YTDLP } from '../../core/ytdlp';
 import { z } from 'zod';
-import { validate } from './_utils';
+import { timemarkToSeconds, validate } from './_utils';
 import { PassThrough } from 'stream';
+import { getSocket, NextApiResponseServerIO } from './socketio';
+import { createId } from '@paralleldrive/cuid2';
 
 const ytdlp = new YTDLP();
 const ffmpeg = new FFMPEG();
+
+export type DownloadProgress = {
+  ytdlp: {
+    value: number;
+    text: string;
+  }
+  ffmpeg: {
+    value: number;
+    text: string;
+  }
+}
 
 const schema = z.object({
   query: z.object({
@@ -17,7 +30,7 @@ const schema = z.object({
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponseServerIO
 ) {
   if (req.method !== 'GET') {
     return res.status(405).send({
@@ -35,15 +48,46 @@ export default async function handler(
 
   try {
     const info = await ytdlp.getInfo(url);
+    const duration = Math.floor(info.duration);
+
     const passthrough = new PassThrough();
 
+    let ytdlProgress = 0;
+    let ffmpegProgress = 0;
+    let ytdlText = 'Waiting for stream';
+    let ffmpegText = 'Waiting for conversion'
+
     const ytdlStream = ytdlp.downloadStreamable(url);
+
+    const socket = getSocket(res);
+    const ticket = createId();
+
+    const updateProgress = () => {
+      const downloadProgress: DownloadProgress = {
+        ffmpeg: {
+          value: Math.ceil(ffmpegProgress),
+          text: ffmpegText,
+        },
+        ytdlp: {
+          value: Math.ceil(ytdlProgress),
+          text: ytdlText,
+        },
+      };
+      socket.to(`ticket-${ticket}`).emit(`progress-${ticket}`, downloadProgress);
+    }
 
     ytdlStream.on('data', (chunk) => {
       passthrough.write(chunk);
     });
 
+    ytdlStream.on('progress', (progress) => {
+      ytdlText = 'Streaming Video';
+      ytdlProgress = progress.percent || 0;
+      updateProgress();
+    });
+
     ytdlStream.on('end', () => {
+      ytdlText = 'Finished Download'
       passthrough.end();
     });
 
@@ -53,9 +97,23 @@ export default async function handler(
 
     const ffmpegWritable = ffmpeg.convertStreamable(passthrough);
     
+    ffmpegWritable.on('progress', (progress) => {
+      ffmpegText = 'Converting Video';
+      const timemarkSeconds = timemarkToSeconds(progress.timemark);
+      if (timemarkSeconds !== null) {
+        const durationProgress = (timemarkSeconds / duration) * 100;
+        if (durationProgress <= 100) {
+          ffmpegProgress = (timemarkSeconds / duration) * 100;
+        }
+      }
+
+      updateProgress();
+    });
+
     res.writeHead(200, {
       'Content-Type': 'audio/mpeg',
-      'Content-Disposition': `attachment; filename="${info.title}.mp3"`
+      'Content-Disposition': `attachment; filename="${info.title}.mp3"`,
+      'X-Download-Ticket': ticket,
     });
 
     ffmpegWritable.pipe(res);

@@ -6,6 +6,7 @@ import { showNotification } from '@mantine/notifications';
 import { useState } from 'react';
 import { saveAs } from 'file-saver';
 import { IconBrandFacebook, IconBrandInstagram, IconBrandSoundcloud, IconBrandYoutube, IconDots } from '@tabler/icons-react';
+import DownloadProgress from '../components/DownloadProgress';
 
 const schema = z.object({
   url: z.string().url('Needs to be a valid URL')
@@ -14,6 +15,7 @@ const schema = z.object({
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [buttonText, setButtonText] = useState('Download');
+  const [currentTicket, setCurrentTicket] = useState<string | null>(null);
   
   const form = useForm({
     initialValues: { url: '' },
@@ -35,6 +37,8 @@ export default function Home() {
 
     const res = await fetch(url);
 
+    setCurrentTicket(res.headers.get('X-Download-Ticket'));
+
     if (!res.ok || !res.body) {
       reset();
       return showNotification({
@@ -44,6 +48,9 @@ export default function Home() {
     }
 
     const blob = await res.blob();
+
+    setCurrentTicket(null);
+
     const contentDisposition = res.headers.get('Content-Disposition');
 
     let filename: string | null = null;
@@ -122,6 +129,10 @@ export default function Home() {
                   >
                     {buttonText}
                   </Button>
+                  {
+                    currentTicket !== null &&
+                    <DownloadProgress ticket={currentTicket} />
+                  }
                 </Flex>
               </form>
             </Paper>
