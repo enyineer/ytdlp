@@ -36,7 +36,7 @@ export default function ResourceUsage() {
           <Flex direction="column" align="center" gap={6}>
             <Tooltip label={`CPU ${currentUsage.cpu}%`}>
               <ThemeIcon color="gray">
-                <IconCpu />
+                <IconCpu size={18} />
               </ThemeIcon>
             </Tooltip>
             <Progress value={currentUsage.cpu} w="100%"/>
@@ -48,7 +48,7 @@ export default function ResourceUsage() {
           <Flex direction="column" align="center" gap={6}>
             <Tooltip label={`MEM ${currentUsage.mem}%`}>
               <ThemeIcon color="gray">
-                <IconDatabase />
+                <IconDatabase size={18} />
               </ThemeIcon>
             </Tooltip>
             <Progress value={currentUsage.mem} w="100%"/>
@@ -60,7 +60,7 @@ export default function ResourceUsage() {
           <Flex direction="column" align="center">
             <Tooltip label={`${currentUsage.downloads} Downloads`}>
               <ThemeIcon color="gray">
-                <IconDownload />
+                <IconDownload size={18} />
               </ThemeIcon>
             </Tooltip>
             <Text fz="xs" color="dimmed">{currentUsage.downloads}</Text>
