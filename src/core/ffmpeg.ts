@@ -23,11 +23,13 @@ export class FFMPEG {
   }
 
   convertStreamable(stream: Readable) {
-    const ffmpeg = FFMPEGWrapper(stream);
+    const ffmpeg = FFMPEGWrapper(stream, {
+      logger: console
+    });
     ffmpeg.setFfmpegPath(this.ffmpegPath);
     ffmpeg.setFfprobePath(this.ffprobePath);
     ffmpeg.toFormat('mp3');
-    return ffmpeg.pipe();
+    return ffmpeg;
   }
 
   private getBinaryPath(binary: Binary, path?: string) {

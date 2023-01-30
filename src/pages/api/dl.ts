@@ -4,6 +4,8 @@ import { FFMPEG } from '../../core/ffmpeg';
 import { YTDLP } from '../../core/ytdlp';
 import { z } from 'zod';
 import { validate } from './_utils';
+import Minipass from 'minipass';
+import { PassThrough } from 'stream';
 
 const ytdlp = new YTDLP();
 const ffmpeg = new FFMPEG();
@@ -34,16 +36,30 @@ export default async function handler(
 
   try {
     const info = await ytdlp.getInfo(url);
+    const passthrough = new PassThrough();
 
     const ytdlStream = ytdlp.downloadStreamable(url);
-    const readableStream = ffmpeg.convertStreamable(ytdlStream);
 
+    ytdlStream.on('data', (chunk) => {
+      passthrough.write(chunk);
+    });
+
+    ytdlStream.on('end', () => {
+      passthrough.end();
+    });
+
+    ytdlStream.on('error', (err) => {
+      console.error(`Error in ytdlStream: ${err.message}`);
+    });
+
+    const ffmpegWritable = ffmpeg.convertStreamable(passthrough);
+    
     res.writeHead(200, {
       'Content-Type': 'audio/mpeg',
       'Content-Disposition': `attachment; filename="${info.title}.mp3"`
     });
 
-    readableStream.pipe(res);
+    ffmpegWritable.pipe(res);
   } catch (err) {
     if (err instanceof Error) {
       console.error(err.message);
