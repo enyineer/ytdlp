@@ -1,12 +1,13 @@
 import Head from 'next/head'
-import { ActionIcon, Button, Container, Flex, Paper, Text, TextInput, ThemeIcon, Title, Tooltip } from '@mantine/core'
+import { ActionIcon, Button, Container, Flex, Group, Paper, Text, TextInput, ThemeIcon, Title, Tooltip, UnstyledButton } from '@mantine/core'
 import { useForm, zodResolver } from '@mantine/form'
 import { z } from 'zod'
 import { showNotification } from '@mantine/notifications';
 import { useState } from 'react';
 import { saveAs } from 'file-saver';
-import { IconBrandFacebook, IconBrandInstagram, IconBrandSoundcloud, IconBrandYoutube, IconDots } from '@tabler/icons-react';
+import { IconBrandFacebook, IconBrandInstagram, IconBrandSoundcloud, IconBrandYoutube, IconDots, IconInfoCircle } from '@tabler/icons-react';
 import DownloadProgress from '../components/DownloadProgress';
+import { open } from '../components/DisclaimerModal';
 
 const schema = z.object({
   url: z.string().url('Needs to be a valid URL')
@@ -76,7 +77,7 @@ export default function Home() {
     <>
       <Head>
         <title>MusicDL</title>
-        <meta name="description" content="Music downloader without any dogshit" />
+        <meta name="description" content="Music downloader" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -136,8 +137,12 @@ export default function Home() {
                 </Flex>
               </form>
             </Paper>
-            <Text color="dimmed" fz="xs">Easy link to MP3 Converter - no dogshit included</Text>
             <Text color="dimmed" fz="xs">Made with ❤️ for Allegra</Text>
+            <UnstyledButton onClick={() => open()}>
+              <Group>
+                <Text fz="xs">Disclaimer & Usage Policy</Text>
+              </Group>
+            </UnstyledButton>
           </Flex>
         </Container>
       </main>

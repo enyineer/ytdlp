@@ -17,6 +17,7 @@
     "@mantine/core": "^5.10.2",
     "@mantine/form": "^5.10.2",
     "@mantine/hooks": "^5.10.2",
+    "@mantine/modals": "^5.10.2",
     "@mantine/notifications": "^5.10.2",
     "@next/font": "13.1.6",
     "@paralleldrive/cuid2": "^2.0.1",

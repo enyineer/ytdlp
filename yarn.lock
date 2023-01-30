@@ -330,6 +330,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/modals@npm:^5.10.2":
+  version: 5.10.2
+  resolution: "@mantine/modals@npm:5.10.2"
+  dependencies:
+    "@mantine/utils": 5.10.2
+  peerDependencies:
+    "@mantine/core": 5.10.2
+    "@mantine/hooks": 5.10.2
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 65310c532eb5d56fa4ee5f2613fb500eb6245361321cd87f2b3e8e0f9bbfcb12e91877ca0618ef8898d2d58be5091e98fa078b9750ff17ec5a53c60d9803ba6d
+  languageName: node
+  linkType: hard
+
 "@mantine/notifications@npm:^5.10.2":
   version: 5.10.2
   resolution: "@mantine/notifications@npm:5.10.2"
@@ -3805,6 +3819,7 @@ __metadata:
     "@mantine/core": ^5.10.2
     "@mantine/form": ^5.10.2
     "@mantine/hooks": ^5.10.2
+    "@mantine/modals": ^5.10.2
     "@mantine/notifications": ^5.10.2
     "@next/font": 13.1.6
     "@paralleldrive/cuid2": ^2.0.1
