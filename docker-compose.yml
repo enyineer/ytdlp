@@ -32,9 +32,9 @@ services:
   musicdl:
     image: nicoenking/musicdl
     environment:
-      - VIRTUAL_HOST=musicdl.de
+      - VIRTUAL_HOST=musicdl.de,musicdl.enking.dev
       - VIRTUAL_PORT=3000
-      - LETSENCRYPT_HOST=musicdl.de
+      - LETSENCRYPT_HOST=musicdl.de,musicdl.enking.dev
       - LETSENCRYPT_EMAIL=nico.enking@gmail.com
     networks:
       - musicdl
