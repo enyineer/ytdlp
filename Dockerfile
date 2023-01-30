@@ -43,6 +43,9 @@ COPY --from=builder /app/package.json ./package.json
 RUN rm -rf /app/.yarn/unplugged && yarn rebuild
 RUN chown -R nextjs:nodejs /app/.next
 
+RUN mkdir ./storage && \
+  chown -R nextjs:nodejs ./storage
+
 USER nextjs
 
 EXPOSE 3000
