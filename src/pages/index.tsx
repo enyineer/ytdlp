@@ -99,7 +99,7 @@ export default function Home() {
               </form>
             </Paper>
             <Text color="dimmed" fz="xs">Easy music downloader - no dogshit included</Text>
-            <Text color="dimmed" fz="xs">Made by <Link href="https://enking.dev" target="_blank">Niggo</Link></Text>
+            <Text color="dimmed" fz="xs">Made with ❤️ for Allegra</Text>
           </Flex>
         </Container>
       </main>
