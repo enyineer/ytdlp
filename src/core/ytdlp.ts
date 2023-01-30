@@ -16,6 +16,7 @@ export class YTDLP {
   downloadStreamable(video: string) {
     return this.ytdlp.execStream([
       video,
+      '--no-playlist'
     ]);
   }
 

@@ -45,12 +45,12 @@ export default function ResourceUsage() {
       <Grid.Col span={6}>
         <Center>
           <Flex direction="column" align="center" gap={4}>
-            <Tooltip label={`MEM ${currentUsage.cpu}%`}>
+            <Tooltip label={`MEM ${currentUsage.mem}%`}>
               <ThemeIcon color="gray">
                 <IconDatabase />
               </ThemeIcon>
             </Tooltip>
-            <Progress value={currentUsage?.mem} w="100%"/>
+            <Progress value={currentUsage.mem} w="100%"/>
           </Flex>
         </Center>
       </Grid.Col>
