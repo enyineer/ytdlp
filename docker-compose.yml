@@ -11,6 +11,8 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
     networks:
       - musicdl
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
 
   nginx-proxy-acme:
     image: nginxproxy/acme-companion
