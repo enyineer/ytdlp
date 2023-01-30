@@ -31,6 +31,8 @@ services:
 
   musicdl:
     image: nicoenking/musicdl
+    volumes:
+      - nodeStorage:/app/storage
     environment:
       - VIRTUAL_HOST=musicdl.de,musicdl.enking.dev
       - VIRTUAL_PORT=3000
@@ -47,6 +49,8 @@ volumes:
   html:
     driver: local
   acme:
+    driver: local
+  nodeStorage:
     driver: local
   
 
