@@ -5,7 +5,7 @@ import { z } from 'zod'
 import { showNotification } from '@mantine/notifications';
 import { useState } from 'react';
 import { saveAs } from 'file-saver';
-import { IconBrandFacebook, IconBrandInstagram, IconBrandSoundcloud, IconBrandYoutube, IconDots, IconInfoCircle } from '@tabler/icons-react';
+import { IconBrandFacebook, IconBrandInstagram, IconBrandSoundcloud, IconBrandYoutube, IconDots } from '@tabler/icons-react';
 import DownloadProgress from '../components/DownloadProgress';
 import { open } from '../components/DisclaimerModal';
 import ResourceUsage from '../components/ResourceUsage';
@@ -138,13 +138,13 @@ export default function Home() {
                 </Flex>
               </form>
             </Paper>
-            <ResourceUsage />
             <Text color="dimmed" fz="xs">Made with ❤️ for Allegra</Text>
             <UnstyledButton onClick={() => open()}>
               <Group>
                 <Text fz="xs">Disclaimer & Usage Policy</Text>
               </Group>
             </UnstyledButton>
+            <ResourceUsage />
           </Flex>
         </Container>
       </main>

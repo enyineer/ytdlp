@@ -5,6 +5,7 @@ import { DownloadProgress as DownloadProgressType } from '../pages/api/dl';
 
 type DownloadProgressProps = {
   ticket: string;
+  onProgress?: (percentager: number) => void;
 }
 
 export default function DownloadProgress(props: DownloadProgressProps) {
@@ -32,10 +33,20 @@ export default function DownloadProgress(props: DownloadProgressProps) {
     }
   }, [props.ticket, socket]);
 
+  const percentage = Math.ceil(
+    ((currentProgress?.ffmpeg.value || 0) + (currentProgress?.ytdlp.value || 0)) / 2
+  );
+
+  if (props.onProgress) {
+    props.onProgress(percentage);
+  }
+
   return (
     <Flex direction="column" gap="xs" align="center">
-      <Text fz="xs">{currentProgress?.ytdlp.text} {currentProgress?.ytdlp.value}%</Text>
-      <Text fz="xs">{currentProgress?.ffmpeg.text} {currentProgress?.ffmpeg.value}%</Text>
+      <Text fz="xs">
+        {percentage}%
+      </Text>
+      <Progress value={percentage} w="100%" color="teal" striped animate />
     </Flex>
   );
 }
