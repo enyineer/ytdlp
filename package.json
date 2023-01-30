@@ -35,6 +35,7 @@
     "react-dom": "18.2.0",
     "socket.io": "^4.5.4",
     "socket.io-client": "^4.5.4",
+    "systeminformation": "^5.17.8",
     "typescript": "4.9.4",
     "yt-dlp-wrap": "^2.3.11",
     "zod": "^3.20.2"

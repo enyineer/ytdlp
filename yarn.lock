@@ -3496,6 +3496,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"systeminformation@npm:^5.17.8":
+  version: 5.17.8
+  resolution: "systeminformation@npm:5.17.8"
+  bin:
+    systeminformation: lib/cli.js
+  checksum: faea46485d646c304e1cf19956155345e1e2e644b605c40189851846b544e58a9937467b3e577151b54a54ed5310b625cca49665aa7ef1eb1bf8a8e3d7282d8d
+  conditions: (os=darwin | os=linux | os=win32 | os=freebsd | os=openbsd | os=netbsd | os=sunos | os=android)
+  languageName: node
+  linkType: hard
+
 "tapable@npm:^2.2.0":
   version: 2.2.1
   resolution: "tapable@npm:2.2.1"
@@ -3840,6 +3850,7 @@ __metadata:
     react-dom: 18.2.0
     socket.io: ^4.5.4
     socket.io-client: ^4.5.4
+    systeminformation: ^5.17.8
     typescript: 4.9.4
     yt-dlp-wrap: ^2.3.11
     zod: ^3.20.2

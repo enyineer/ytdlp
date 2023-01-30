@@ -8,6 +8,7 @@ import { saveAs } from 'file-saver';
 import { IconBrandFacebook, IconBrandInstagram, IconBrandSoundcloud, IconBrandYoutube, IconDots, IconInfoCircle } from '@tabler/icons-react';
 import DownloadProgress from '../components/DownloadProgress';
 import { open } from '../components/DisclaimerModal';
+import ResourceUsage from '../components/ResourceUsage';
 
 const schema = z.object({
   url: z.string().url('Needs to be a valid URL')
@@ -137,6 +138,7 @@ export default function Home() {
                 </Flex>
               </form>
             </Paper>
+            <ResourceUsage />
             <Text color="dimmed" fz="xs">Made with ❤️ for Allegra</Text>
             <UnstyledButton onClick={() => open()}>
               <Group>

@@ -2,6 +2,12 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { Socket } from 'net';
 import { Server as SocketIOServer } from "socket.io";
 import { Server as NetServer } from "http";
+import si from "systeminformation";
+
+export type ResourceInfo = {
+  cpu: number;
+  mem: number;
+}
 
 export type NextApiResponseServerIO = NextApiResponse & {
   socket: Socket & {
@@ -44,6 +50,22 @@ export function getSocket(res: NextApiResponseServerIO) {
         socket.join(room);
       });
     });
+
+    setInterval(async () => {
+      if (ioServer) {
+        const currentLoad = await si.currentLoad();
+        const cpuLoadAverage = currentLoad.cpus.reduce((a, b) => a + Math.floor(b.load), 0) / currentLoad.cpus.length;
+        const mem = await si.mem();
+        const freeMemPercentage = (mem.free / mem.total) * 100;
+
+        const data: ResourceInfo = {
+          cpu: cpuLoadAverage,
+          mem: freeMemPercentage,
+        }
+
+        ioServer.emit('resources', data);
+      }
+    }, 5000);
   }
 
   return ioServer;

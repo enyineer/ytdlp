@@ -56,6 +56,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:18.2.0"],\
             ["socket.io", "npm:4.5.4"],\
             ["socket.io-client", "npm:4.5.4"],\
+            ["systeminformation", "npm:5.17.8"],\
             ["typescript", "patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"],\
             ["yt-dlp-wrap", "npm:2.3.11"],\
             ["zod", "npm:3.20.2"]\
@@ -4486,6 +4487,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["systeminformation", [\
+        ["npm:5.17.8", {\
+          "packageLocation": "./.yarn/unplugged/systeminformation-npm-5.17.8-467943d1f0/node_modules/systeminformation/",\
+          "packageDependencies": [\
+            ["systeminformation", "npm:5.17.8"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["tapable", [\
         ["npm:2.2.1", {\
           "packageLocation": "./.yarn/cache/tapable-npm-2.2.1-8cf5ff3039-3b7a1b4d86.zip/node_modules/tapable/",\
@@ -4907,6 +4917,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:18.2.0"],\
             ["socket.io", "npm:4.5.4"],\
             ["socket.io-client", "npm:4.5.4"],\
+            ["systeminformation", "npm:5.17.8"],\
             ["typescript", "patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=ad5954"],\
             ["yt-dlp-wrap", "npm:2.3.11"],\
             ["zod", "npm:3.20.2"]\
