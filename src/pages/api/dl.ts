@@ -7,6 +7,7 @@ import { timemarkToSeconds, validate } from './_utils';
 import { PassThrough } from 'stream';
 import { getSocket, NextApiResponseServerIO } from './socketio';
 import { createId } from '@paralleldrive/cuid2';
+import storage from '../../core/storage';
 
 const ytdlp = new YTDLP();
 const ffmpeg = new FFMPEG();
@@ -106,7 +107,6 @@ export default async function handler(
           ffmpegProgress = (timemarkSeconds / duration) * 100;
         }
       }
-
       updateProgress();
     });
 
@@ -115,6 +115,9 @@ export default async function handler(
       'Content-Disposition': `attachment; filename="${info.title}.mp3"`,
       'X-Download-Ticket': ticket,
     });
+
+    const downloads = (await storage.getItem('downloads')) || 0;
+    await storage.setItem('downloads', downloads + 1);
 
     ffmpegWritable.pipe(res);
   } catch (err) {

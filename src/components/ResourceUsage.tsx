@@ -1,5 +1,5 @@
 import { Center, Flex, Grid, Group, Progress, Text, ThemeIcon, Tooltip } from '@mantine/core';
-import { IconCpu, IconDatabase } from '@tabler/icons-react';
+import { IconCpu, IconDatabase, IconDownload } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import useSocket from '../hooks/useSocket';
 import { ResourceInfo } from '../pages/api/socketio';
@@ -16,6 +16,7 @@ export default function ResourceUsage() {
         setCurrentUsage({
           cpu: Math.floor(update.cpu),
           mem: Math.floor(update.mem),
+          downloads: update.downloads,
         });
       });
       return () => {
@@ -30,9 +31,9 @@ export default function ResourceUsage() {
 
   return (
     <Grid w="10rem" mt={1}>
-      <Grid.Col span={6}>
+      <Grid.Col span={4}>
         <Center>
-          <Flex direction="column" align="center" gap={4}>
+          <Flex direction="column" align="center" gap={6}>
             <Tooltip label={`CPU ${currentUsage.cpu}%`}>
               <ThemeIcon color="gray">
                 <IconCpu />
@@ -42,15 +43,27 @@ export default function ResourceUsage() {
           </Flex>
         </Center>
       </Grid.Col>
-      <Grid.Col span={6}>
+      <Grid.Col span={4}>
         <Center>
-          <Flex direction="column" align="center" gap={4}>
+          <Flex direction="column" align="center" gap={6}>
             <Tooltip label={`MEM ${currentUsage.mem}%`}>
               <ThemeIcon color="gray">
                 <IconDatabase />
               </ThemeIcon>
             </Tooltip>
             <Progress value={currentUsage.mem} w="100%"/>
+          </Flex>
+        </Center>
+      </Grid.Col>
+      <Grid.Col span={4}>
+        <Center>
+          <Flex direction="column" align="center">
+            <Tooltip label={`${currentUsage.downloads} Downloads`}>
+              <ThemeIcon color="gray">
+                <IconDownload />
+              </ThemeIcon>
+            </Tooltip>
+            <Text fz="xs" color="dimmed">{currentUsage.downloads}</Text>
           </Flex>
         </Center>
       </Grid.Col>

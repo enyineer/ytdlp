@@ -3,10 +3,12 @@ import { Socket } from 'net';
 import { Server as SocketIOServer } from "socket.io";
 import { Server as NetServer } from "http";
 import si from "systeminformation";
+import storage from '../../core/storage';
 
 export type ResourceInfo = {
   cpu: number;
   mem: number;
+  downloads: number;
 }
 
 export type NextApiResponseServerIO = NextApiResponse & {
@@ -57,10 +59,12 @@ export function getSocket(res: NextApiResponseServerIO) {
         const cpuLoadAverage = currentLoad.cpus.reduce((a, b) => a + Math.floor(b.load), 0) / currentLoad.cpus.length;
         const mem = await si.mem();
         const freeMemPercentage = (mem.free / mem.total) * 100;
+        const downloads = (await storage.getItem('downloads')) || 0;
 
         const data: ResourceInfo = {
           cpu: cpuLoadAverage,
           mem: freeMemPercentage,
+          downloads: downloads,
         }
 
         ioServer.emit('resources', data);

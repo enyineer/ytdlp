@@ -44,6 +44,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/file-saver", "npm:2.0.5"],\
             ["@types/fluent-ffmpeg", "npm:2.1.20"],\
             ["@types/node", "npm:18.11.18"],\
+            ["@types/node-persist", "npm:3.1.3"],\
             ["@types/react", "npm:18.0.27"],\
             ["@types/react-dom", "npm:18.0.10"],\
             ["command-exists", "npm:1.2.9"],\
@@ -52,6 +53,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["file-saver", "npm:2.0.5"],\
             ["fluent-ffmpeg", "npm:2.1.2"],\
             ["next", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:13.1.6"],\
+            ["node-persist", "npm:3.1.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:18.2.0"],\
             ["socket.io", "npm:4.5.4"],\
@@ -1251,6 +1253,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["npm:18.11.18", {\
           "packageLocation": "./.yarn/cache/@types-node-npm-18.11.18-d61e8a4a20-03f17f9480.zip/node_modules/@types/node/",\
           "packageDependencies": [\
+            ["@types/node", "npm:18.11.18"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/node-persist", [\
+        ["npm:3.1.3", {\
+          "packageLocation": "./.yarn/cache/@types-node-persist-npm-3.1.3-bd340b3d0e-f872f1d896.zip/node_modules/@types/node-persist/",\
+          "packageDependencies": [\
+            ["@types/node-persist", "npm:3.1.3"],\
             ["@types/node", "npm:18.11.18"]\
           ],\
           "linkType": "HARD"\
@@ -3698,6 +3710,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["node-persist", [\
+        ["npm:3.1.0", {\
+          "packageLocation": "./.yarn/cache/node-persist-npm-3.1.0-5dd550b4d7-8d99916f26.zip/node_modules/node-persist/",\
+          "packageDependencies": [\
+            ["node-persist", "npm:3.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["object-assign", [\
         ["npm:4.1.1", {\
           "packageLocation": "./.yarn/cache/object-assign-npm-4.1.1-1004ad6dec-fcc6e4ea8c.zip/node_modules/object-assign/",\
@@ -4905,6 +4926,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/file-saver", "npm:2.0.5"],\
             ["@types/fluent-ffmpeg", "npm:2.1.20"],\
             ["@types/node", "npm:18.11.18"],\
+            ["@types/node-persist", "npm:3.1.3"],\
             ["@types/react", "npm:18.0.27"],\
             ["@types/react-dom", "npm:18.0.10"],\
             ["command-exists", "npm:1.2.9"],\
@@ -4913,6 +4935,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["file-saver", "npm:2.0.5"],\
             ["fluent-ffmpeg", "npm:2.1.2"],\
             ["next", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:13.1.6"],\
+            ["node-persist", "npm:3.1.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:2f105a23ddad7348e13b74f5d36fc1a957f6de41e90e1358e1f557237dbac083854816dba93266ae84cd211d84212c3a291d3eb89116bd1f5456448169f8edde#npm:18.2.0"],\
             ["socket.io", "npm:4.5.4"],\

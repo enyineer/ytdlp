@@ -774,6 +774,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node-persist@npm:^3.1.3":
+  version: 3.1.3
+  resolution: "@types/node-persist@npm:3.1.3"
+  dependencies:
+    "@types/node": "*"
+  checksum: f872f1d8963910206317a0a0a2a7a753bbd06d4a6e4acbdbef26f92caaf63b281fe047e8c75fa1ee5269f909b99991c7e3a5523c71badee8d5992b8c07d4ca93
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:18.11.18, @types/node@npm:>=10.0.0":
   version: 18.11.18
   resolution: "@types/node@npm:18.11.18"
@@ -2812,6 +2821,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-persist@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "node-persist@npm:3.1.0"
+  checksum: 8d99916f269272415474a6edd5e9323b59854807673e16e4c036c2b5fe7bd257c119d47f0bc9d19af8889241531c44b12a55a576cc33786ceab16faa3c20c951
+  languageName: node
+  linkType: hard
+
 "object-assign@npm:^4, object-assign@npm:^4.1.1":
   version: 4.1.1
   resolution: "object-assign@npm:4.1.1"
@@ -3838,6 +3854,7 @@ __metadata:
     "@types/file-saver": ^2.0.5
     "@types/fluent-ffmpeg": ^2.1.20
     "@types/node": 18.11.18
+    "@types/node-persist": ^3.1.3
     "@types/react": 18.0.27
     "@types/react-dom": 18.0.10
     command-exists: ^1.2.9
@@ -3846,6 +3863,7 @@ __metadata:
     file-saver: ^2.0.5
     fluent-ffmpeg: ^2.1.2
     next: 13.1.6
+    node-persist: ^3.1.0
     react: 18.2.0
     react-dom: 18.2.0
     socket.io: ^4.5.4
