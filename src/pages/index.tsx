@@ -83,7 +83,7 @@ export default function Home() {
         <title>MusicDL</title>
         <meta name="description" content="MusicDL helps you to download music from sources like YouTube or Soundcloud" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="Music DL - Music Downloader" />
+        <meta property="og:title" content="MusicDL - Music DownLoader" />
         <meta property="og:description" content="MusicDL helps you to download music from sources like YouTube or Soundcloud" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://musicdl.de" />
