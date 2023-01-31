@@ -104,6 +104,7 @@ export default function Home() {
         <meta property="og:url" content="https://musicdl.de" />
         <meta property="og:image" content="https://musicdl.de/og_image.png" />
         <meta property="twitter:image" content="https://musicdl.de/og_image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
