@@ -91,15 +91,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Container h="100vh">
-          <Flex direction="column" h="100%" justify="center" align="center" gap="xs">
-            <Group>
-              <Image src={Logo} alt="Logo" width={60} height={60} />
-              <Flex direction="column">
-                <Title order={1}>MusicDL</Title>
-                <Text color="dimmed">Link to MP3 converter</Text>
+        <Container h="100vh" p="xl">
+          <Flex direction="column" h="100%" justify="space-between" align="center" gap="xs">
+            <Flex direction="column" align="center">
+              <Flex justify="center" gap="sm" align="center">
+                <Image src={Logo} alt="Logo" width={60} height={60} />
+                <Title order={3}>MusicDL</Title>
               </Flex>
-            </Group>
+              <Text color="dimmed">Link to MP3 converter</Text>
+            </Flex>
             <Paper shadow="xs" p="md" withBorder>
               <form onSubmit={form.onSubmit(handleDownload)}>
                 <Flex direction="column" w="20rem" gap="md">
@@ -152,13 +152,15 @@ export default function Home() {
                 </Flex>
               </form>
             </Paper>
-            <Text color="dimmed" fz="xs">Made with ❤️ for Allegra</Text>
-            <UnstyledButton onClick={() => openDisclaimerModal()}>
-              <Group>
-                <Text fz="xs">Disclaimer & Usage Policy</Text>
-              </Group>
-            </UnstyledButton>
-            <ResourceUsage />
+            <Flex direction="column" align="center">
+              <Text color="dimmed" fz="xs">Made with ❤️ for Allegra</Text>
+              <UnstyledButton onClick={() => openDisclaimerModal()}>
+                <Group>
+                  <Text fz="xs">Disclaimer & Usage Policy</Text>
+                </Group>
+              </UnstyledButton>
+              <ResourceUsage />
+            </Flex>
           </Flex>
         </Container>
       </main>
