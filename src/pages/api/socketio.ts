@@ -54,6 +54,11 @@ export function getSocket(res: NextApiResponseServerIO) {
       socket.on("joinRoom", (room: string) => {
         socket.join(room);
       });
+
+      socket.on("leaveRoom", (room: string) => {
+        socket.leave(room);
+      });
+
       const data = await getCurrentResourceData();
       socket.emit('resources', data);
     });

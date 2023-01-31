@@ -15,13 +15,13 @@ const ffmpeg = new FFMPEG();
 export type DownloadProgress = {
   ytdlp: {
     value: number;
-    text: string;
   }
   ffmpeg: {
     value: number;
-    text: string;
   }
 }
+
+export type DownloadEvent = 'end' | 'error';
 
 const schema = z.object({
   query: z.object({
@@ -61,8 +61,6 @@ export default async function handler(
 
     let ytdlProgress = 0;
     let ffmpegProgress = 0;
-    let ytdlText = 'Waiting for stream';
-    let ffmpegText = 'Waiting for conversion'
 
     const ytdlStream = ytdlp.downloadStreamable(url);
 
@@ -73,11 +71,9 @@ export default async function handler(
       const downloadProgress: DownloadProgress = {
         ffmpeg: {
           value: Math.ceil(ffmpegProgress),
-          text: ffmpegText,
         },
         ytdlp: {
           value: Math.ceil(ytdlProgress),
-          text: ytdlText,
         },
       };
       socket.to(`ticket-${ticket}`).emit(`progress-${ticket}`, downloadProgress);
@@ -88,24 +84,22 @@ export default async function handler(
     });
 
     ytdlStream.on('progress', (progress) => {
-      ytdlText = 'Streaming Video';
       ytdlProgress = progress.percent || 0;
       updateProgress();
     });
 
     ytdlStream.on('end', () => {
-      ytdlText = 'Finished Download'
       passthrough.end();
     });
 
     ytdlStream.on('error', (err) => {
+      socket.to(`ticket-${ticket}`).emit(`event-${ticket}`, 'error');
       console.error(`Error in ytdlStream: ${err.message}`);
     });
 
     const ffmpegWritable = ffmpeg.convertStreamable(passthrough);
     
     ffmpegWritable.on('progress', (progress) => {
-      ffmpegText = 'Converting Video';
       const timemarkSeconds = timemarkToSeconds(progress.timemark);
       if (timemarkSeconds !== null) {
         const durationProgress = (timemarkSeconds / duration) * 100;
@@ -114,6 +108,15 @@ export default async function handler(
         }
       }
       updateProgress();
+    });
+
+    ffmpegWritable.on('end', () => {
+      socket.to(`ticket-${ticket}`).emit(`event-${ticket}`, 'end');
+    });
+
+    ffmpegWritable.on('error', (err) => {
+      socket.to(`ticket-${ticket}`).emit(`event-${ticket}`, 'error');
+      console.error(`Error in ffmpegWritable: ${err.message}`);
     });
 
     res.writeHead(200, {
