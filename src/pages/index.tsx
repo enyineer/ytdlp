@@ -103,6 +103,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://musicdl.de" />
         <meta property="og:image" content="https://musicdl.de/og_image.png" />
+        <meta property="twitter:image" content="https://musicdl.de/og_image.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
