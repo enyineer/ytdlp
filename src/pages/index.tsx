@@ -132,7 +132,7 @@ export default function Home() {
                       </ThemeIcon>
                     </Tooltip>
                     <Tooltip label="And many more!">
-                      <ActionIcon onClick={() => openSupportedSitesModal()}>
+                      <ActionIcon onClick={() => openSupportedSitesModal()} title="Supported Websites">
                         <IconDots />
                       </ActionIcon>
                     </Tooltip>

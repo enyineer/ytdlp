@@ -42,6 +42,6 @@ export default function DownloadProgress(props: DownloadProgressProps) {
   }
 
   return (
-    <Progress value={percentage} w="100%" color="teal" striped animate />
+    <Progress value={percentage} w="100%" color="teal" striped animate aria-label="Download progress" />
   );
 }

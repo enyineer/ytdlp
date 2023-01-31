@@ -35,7 +35,7 @@ export default function ResourceUsage() {
                 <IconCpu size={18} />
               </ThemeIcon>
             </Tooltip>
-            <Progress value={currentUsage?.cpu || 0} w="100%" mt={2} mb={8}/>
+            <Progress value={currentUsage?.cpu || 0} w="100%" mt={2} mb={8} aria-label="CPU Usage" />
           </Flex>
         </Center>
       </Grid.Col>
@@ -47,7 +47,7 @@ export default function ResourceUsage() {
                 <IconDatabase size={18} />
               </ThemeIcon>
             </Tooltip>
-            <Progress value={currentUsage?.mem || 0} w="100%" mt={2} mb={8}/>
+            <Progress value={currentUsage?.mem || 0} w="100%" mt={2} mb={8} aria-label="Memory Usage"/>
           </Flex>
         </Center>
       </Grid.Col>

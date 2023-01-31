@@ -1,4 +1,4 @@
-import { createGetInitialProps, createStylesServer, ServerStyles } from '@mantine/next';
+import { createStylesServer, ServerStyles } from '@mantine/next';
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 import { emotionCache } from '../core/emotionCache';
 
@@ -19,7 +19,7 @@ export default class _Document extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang='en'>
         <Head />
         <body>
           <Main />
