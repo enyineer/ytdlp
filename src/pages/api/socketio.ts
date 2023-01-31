@@ -1,15 +1,15 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { Socket } from 'net';
+import { NextApiRequest, NextApiResponse } from "next";
+import { Socket } from "net";
 import { Server as SocketIOServer } from "socket.io";
 import { Server as NetServer } from "http";
 import si from "systeminformation";
-import storage from '../../core/storage';
+import storage from "../../core/storage";
 
 export type ResourceInfo = {
   cpu: number;
   mem: number;
   downloads: number;
-}
+};
 
 export type NextApiResponseServerIO = NextApiResponse & {
   socket: Socket & {
@@ -21,7 +21,10 @@ export type NextApiResponseServerIO = NextApiResponse & {
 
 let ioServer: SocketIOServer | null = null;
 
-export default function handler(_: NextApiRequest, res: NextApiResponseServerIO) {
+export default function handler(
+  _: NextApiRequest,
+  res: NextApiResponseServerIO
+) {
   const ioServer = getSocket(res);
 
   if (!res.socket.server.io) {
@@ -36,7 +39,7 @@ export const config = {
   api: {
     bodyParser: false,
   },
-}
+};
 
 export function getSocket(res: NextApiResponseServerIO) {
   if (!ioServer) {
@@ -47,30 +50,40 @@ export function getSocket(res: NextApiResponseServerIO) {
       path: "/api/socketio",
     });
 
-    ioServer.on('connection', (socket) => {
-      socket.on('joinRoom', (room: string) => {
+    ioServer.on("connection", async (socket) => {
+      socket.on("joinRoom", (room: string) => {
         socket.join(room);
       });
+      const data = await getCurrentResourceData();
+      socket.emit('resources', data);
     });
 
     setInterval(async () => {
       if (ioServer) {
-        const currentLoad = await si.currentLoad();
-        const cpuLoadAverage = currentLoad.cpus.reduce((a, b) => a + Math.floor(b.load), 0) / currentLoad.cpus.length;
-        const mem = await si.mem();
-        const freeMemPercentage = (mem.free / mem.total) * 100;
-        const downloads = (await storage.getItem('downloads')) || 0;
+        const data = await getCurrentResourceData();
 
-        const data: ResourceInfo = {
-          cpu: cpuLoadAverage,
-          mem: freeMemPercentage,
-          downloads: downloads,
-        }
-
-        ioServer.emit('resources', data);
+        ioServer.emit("resources", data);
       }
     }, 5000);
   }
 
   return ioServer;
 }
+
+const getCurrentResourceData = async () => {
+  const currentLoad = await si.currentLoad();
+  const cpuLoadAverage =
+    currentLoad.cpus.reduce((a, b) => a + Math.floor(b.load), 0) /
+    currentLoad.cpus.length;
+  const mem = await si.mem();
+  const freeMemPercentage = (mem.free / mem.total) * 100;
+  const downloads = (await storage.getItem("downloads")) || 0;
+
+  const data: ResourceInfo = {
+    cpu: cpuLoadAverage,
+    mem: freeMemPercentage,
+    downloads: downloads,
+  };
+
+  return data;
+};
