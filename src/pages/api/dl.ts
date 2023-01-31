@@ -51,7 +51,7 @@ export default async function handler(
     const info = await ytdlp.getInfo(url);
     const duration = Math.floor(info.duration);
 
-    if (typeof duration !== 'number' || duration > 600) {
+    if (typeof duration !== 'number' || Number.isNaN(duration) || duration > 600) {
       return res.status(400).send({
         message: 'Video not supported - Max video length is 10 Minutes.',
       });
