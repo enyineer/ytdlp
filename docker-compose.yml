@@ -34,9 +34,9 @@ services:
     volumes:
       - nodeStorage:/app/storage
     environment:
-      - VIRTUAL_HOST=musicdl.de,musicdl.enking.dev
+      - VIRTUAL_HOST=musicdl.de,www.musicdl.de
       - VIRTUAL_PORT=3000
-      - LETSENCRYPT_HOST=musicdl.de,musicdl.enking.dev
+      - LETSENCRYPT_HOST=musicdl.de,www.musicdl.de
       - LETSENCRYPT_EMAIL=nico.enking@gmail.com
     networks:
       - musicdl
