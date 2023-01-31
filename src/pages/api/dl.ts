@@ -51,6 +51,12 @@ export default async function handler(
     const info = await ytdlp.getInfo(url);
     const duration = Math.floor(info.duration);
 
+    if (typeof duration !== 'number' || duration > 600) {
+      return res.status(400).send({
+        message: 'Video not supported - Max video length is 10 Minutes.',
+      });
+    }
+
     const passthrough = new PassThrough();
 
     let ytdlProgress = 0;
@@ -126,7 +132,7 @@ export default async function handler(
     }
     
     return res.status(400).send({
-      message: 'Bad URL / Request',
+      message: 'Invalid URL.',
     });
   }
 }

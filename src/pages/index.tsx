@@ -44,10 +44,11 @@ export default function Home() {
 
     setCurrentTicket(res.headers.get('X-Download-Ticket'));
 
-    if (!res.ok || !res.body) {
+    if (!res.ok) {
       reset();
+      const json = await res.json();
       return showNotification({
-        message: 'Failed getting file - Check if the URL is supported.',
+        message: json.message,
         color: 'red',
       });
     }
