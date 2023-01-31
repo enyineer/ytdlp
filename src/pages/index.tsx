@@ -94,18 +94,20 @@ export default function Home() {
       <main>
         <Container h="100vh" p="xl">
           <Flex direction="column" h="100%" justify="space-between" align="center" gap="xs">
-            <Flex direction="column" align="center">
+            <Flex direction="column" align="center" gap="md">
               <Flex justify="center" gap="sm" align="center">
                 <Image src={Logo} alt="Logo" width={60} height={60} />
-                <Title order={3}>MusicDL</Title>
+                <Flex direction="column" align="center" justify="center">
+                  <Title order={1}>MusicDL</Title>
+                  <Text>Link to MP3</Text>
+                </Flex>
               </Flex>
-              <Text color="dimmed">Link to MP3 converter</Text>
             </Flex>
             <Paper shadow="xs" p="md" withBorder>
               <form onSubmit={form.onSubmit(handleDownload)}>
                 <Flex direction="column" w="20rem" gap="md">
                   <TextInput
-                    label="URL"
+                    label="Link"
                     withAsterisk
                     disabled={isLoading}
                     placeholder="https://youtube.com/watch?v=OdEN9kQPtbc"
