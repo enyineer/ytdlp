@@ -7,8 +7,11 @@ import { useState } from 'react';
 import { saveAs } from 'file-saver';
 import { IconBrandFacebook, IconBrandInstagram, IconBrandSoundcloud, IconBrandYoutube, IconDots } from '@tabler/icons-react';
 import DownloadProgress from '../components/DownloadProgress';
-import { open } from '../components/DisclaimerModal';
+import { open as openDisclaimerModal } from '../components/DisclaimerModal';
+import { open as openSupportedSitesModal } from '../components/SupportedSitesModal';
 import ResourceUsage from '../components/ResourceUsage';
+import Logo from '../../graphics/Logo.svg';
+import Image from 'next/image';
 
 const schema = z.object({
   url: z.string().url('Needs to be a valid URL')
@@ -85,7 +88,13 @@ export default function Home() {
       <main>
         <Container h="100vh">
           <Flex direction="column" h="100%" justify="center" align="center" gap="xs">
-            <Title>MusicDL</Title>
+            <Group>
+              <Image src={Logo} alt="Logo" width={60} height={60} />
+              <Flex direction="column">
+                <Title order={1}>MusicDL</Title>
+                <Text color="dimmed">Link to URL converter</Text>
+              </Flex>
+            </Group>
             <Paper shadow="xs" p="md" withBorder>
               <form onSubmit={form.onSubmit(handleDownload)}>
                 <Flex direction="column" w="20rem" gap="md">
@@ -118,7 +127,7 @@ export default function Home() {
                       </ThemeIcon>
                     </Tooltip>
                     <Tooltip label="And many more!">
-                      <ActionIcon onClick={() => window.open('https://ytdl-org.github.io/youtube-dl/supportedsites.html', '_blank')?.focus()}>
+                      <ActionIcon onClick={() => openSupportedSitesModal()}>
                         <IconDots />
                       </ActionIcon>
                     </Tooltip>
@@ -139,7 +148,7 @@ export default function Home() {
               </form>
             </Paper>
             <Text color="dimmed" fz="xs">Made with ❤️ for Allegra</Text>
-            <UnstyledButton onClick={() => open()}>
+            <UnstyledButton onClick={() => openDisclaimerModal()}>
               <Group>
                 <Text fz="xs">Disclaimer & Usage Policy</Text>
               </Group>

@@ -46,6 +46,9 @@ RUN chown -R nextjs:nodejs /app/.next
 RUN mkdir ./storage && \
   chown -R nextjs:nodejs ./storage
 
+RUN mkdir ./info && \
+  wget -O ./info/supportedsites.md https://raw.githubusercontent.com/ytdl-org/youtube-dl/master/docs/supportedsites.md
+
 USER nextjs
 
 EXPOSE 3000
