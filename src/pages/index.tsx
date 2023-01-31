@@ -1,14 +1,11 @@
 import Head from "next/head";
 import {
-  ActionIcon,
   Container,
   Flex,
   Group,
   Text,
   TextInput,
-  ThemeIcon,
   Title,
-  Tooltip,
   UnstyledButton,
 } from "@mantine/core";
 import { useForm, zodResolver } from "@mantine/form";
@@ -18,18 +15,14 @@ import { useState } from "react";
 import { saveAs } from "file-saver";
 import {
   IconArrowBarToDown,
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconBrandSoundcloud,
-  IconBrandYoutube,
-  IconDots,
 } from "@tabler/icons-react";
 import DownloadButton from "../components/DownloadButton";
 import { open as openDisclaimerModal } from "../components/DisclaimerModal";
-import { open as openSupportedSitesModal } from "../components/SupportedSitesModal";
+
 import ResourceUsage from "../components/ResourceUsage";
 import Logo from "../../graphics/Logo.svg";
 import Image from "next/image";
+import SupportedSites from '../components/SupportedSites';
 
 const schema = z.object({
   url: z.string().url("Needs to be a valid URL"),
@@ -139,46 +132,13 @@ export default function Home() {
                   placeholder="https://youtube.com/watch?v=OdEN9kQPtbc"
                   {...form.getInputProps("url")}
                 />
-                <Flex gap="xs" justify="center">
-                  <Tooltip label="YouTube">
-                    <ThemeIcon color="red">
-                      <IconBrandYoutube size={18} />
-                    </ThemeIcon>
-                  </Tooltip>
-                  <Tooltip label="Soundcloud">
-                    <ThemeIcon color="orange">
-                      <IconBrandSoundcloud size={18} />
-                    </ThemeIcon>
-                  </Tooltip>
-                  <Tooltip label="Instagram">
-                    <ThemeIcon
-                      color="orange"
-                      variant="gradient"
-                      gradient={{ from: "#F77737", to: "#833AB4" }}
-                    >
-                      <IconBrandInstagram size={18} />
-                    </ThemeIcon>
-                  </Tooltip>
-                  <Tooltip label="Facebook">
-                    <ThemeIcon color="blue">
-                      <IconBrandFacebook size={18} />
-                    </ThemeIcon>
-                  </Tooltip>
-                  <Tooltip label="And many more!">
-                    <ActionIcon
-                      onClick={() => openSupportedSitesModal()}
-                      title="Supported Websites"
-                    >
-                      <IconDots />
-                    </ActionIcon>
-                  </Tooltip>
-                </Flex>
                 <DownloadButton
                   ticket={currentTicket}
                   loading={isLoading}
                   type='submit'
                   leftIcon={<IconArrowBarToDown size={16} />}
                 />
+                <SupportedSites />
               </Flex>
             </form>
             <Flex direction="column" align="center">
