@@ -97,7 +97,7 @@ export default function Home() {
               <Image src={Logo} alt="Logo" width={60} height={60} />
               <Flex direction="column">
                 <Title order={1}>MusicDL</Title>
-                <Text color="dimmed">Link to URL converter</Text>
+                <Text color="dimmed">Link to MP3 converter</Text>
               </Flex>
             </Group>
             <Paper shadow="xs" p="md" withBorder>
