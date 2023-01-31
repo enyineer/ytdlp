@@ -3,11 +3,12 @@ import { IconArrowBarToDown } from '@tabler/icons-react';
 import { ReactNode, useEffect, useState } from 'react';
 import { Socket } from 'socket.io-client';
 import useSocket from '../hooks/useSocket';
-import { DownloadEvent, DownloadProgress as DownloadProgressType } from '../pages/api/dl';
+import { DownloadProgress as DownloadProgressType } from '../pages/api/dl';
 import { ProgressButton } from './ProgressButton';
 
 type DownloadProgressProps = {
   ticket: string | null;
+  loading?: boolean;
   onProgress?: (percentager: number) => void;
   onClick?: () => void;
   type?: ButtonProps['type'];
@@ -74,6 +75,7 @@ export default function DownloadButton(props: DownloadProgressProps) {
       color="gray"
       finishedColor="dark"
       progress={percentage}
+      loading={props.loading}
       texts={{
         default: 'Download',
         inProgress: 'Downloading...'

@@ -175,6 +175,7 @@ export default function Home() {
                 </Flex>
                 <DownloadButton
                   ticket={currentTicket}
+                  loading={isLoading}
                   type='submit'
                   leftIcon={<IconArrowBarToDown size={16} />}
                 />

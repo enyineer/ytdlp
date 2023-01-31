@@ -36,6 +36,7 @@ type ProgressButtonProps = {
   onClick?: () => void;
   variant?: ButtonProps['variant'];
   type?: ButtonProps['type'];
+  loading?: boolean;
 }
 
 export function ProgressButton(props: ProgressButtonProps) {
@@ -49,11 +50,11 @@ export function ProgressButton(props: ProgressButtonProps) {
       color={props.color}
       leftIcon
       variant={props.variant}
-      loading={props.progress !== 0}
+      loading={props.progress !== 0 || props.loading}
       type={props.type}
     >
       <div className={classes.label}>
-        {props.progress !== 0
+        {props.progress !== 0 || props.loading
           ? props.texts.inProgress
           : props.texts.default}
       </div>
