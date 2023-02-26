@@ -45,10 +45,16 @@ export default async function handler(
     return;
   }
 
-  const url = data.query.url;
+  const url = new URL(data.query.url);
+
+  if (url.searchParams.has('list')) {
+    url.searchParams.delete('list');
+  }
+
+  console.log(url);
 
   try {
-    const info = await ytdlp.getInfo(url);
+    const info = await ytdlp.getInfo(url.toString());
     const duration = Math.floor(info.duration);
 
     if (typeof duration !== 'number' || Number.isNaN(duration) || duration > 600) {
@@ -62,7 +68,7 @@ export default async function handler(
     let ytdlProgress = 0;
     let ffmpegProgress = 0;
 
-    const ytdlStream = ytdlp.downloadStreamable(url);
+    const ytdlStream = ytdlp.downloadStreamable(url.toString());
 
     const socket = getSocket(res);
     const ticket = createId();
