@@ -51,8 +51,6 @@ export default async function handler(
     url.searchParams.delete('list');
   }
 
-  console.log(url);
-
   try {
     const info = await ytdlp.getInfo(url.toString());
     const duration = Math.floor(info.duration);
